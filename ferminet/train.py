@@ -494,7 +494,9 @@ def train(cfg: ml_collections.ConfigDict, writer_manager=None):
     make_envelope = getattr(envelope_module, envelope_fn)
     envelope = make_envelope(**cfg.network.make_envelope_kwargs)  # type: envelopes.Envelope
   else:
-    envelope = envelopes.make_isotropic_envelope()
+    # envelope = envelopes.make_isotropic_envelope() # TODO 
+    envelope = None
+
 
   use_complex = cfg.network.get('complex', False)
   if cfg.network.network_type == 'ferminet':
